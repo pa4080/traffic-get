@@ -33,6 +33,7 @@ The sctip is inspired by the question [How to get the current network traffic vi
 
 ![Examples of usages.](https://i.stack.imgur.com/7gBiM.gif)
 
-**References:**
+References:
 
  - [More about the calculations](https://unix.stackexchange.com/a/40787/201297)
+ - [The connected project `traffic-watch`](https://github.com/pa4080/traffic-watch)
