@@ -1,4 +1,4 @@
-# Traffic-watch
+# Traffic-get
 
 Traffic-get is a bash script that could helps you to get the traffic through a network interface for a period of time, defined in seconds. It is designed for Ubuntu 16.04 or later and uses the command Ifconfig.
 
