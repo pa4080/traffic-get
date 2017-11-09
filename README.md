@@ -35,5 +35,7 @@ The sctip is inspired by the question [How to get the current network traffic vi
 
 References:
 
- - [More about the calculations](https://unix.stackexchange.com/a/40787/201297)
- - [The connected project `traffic-watch`](https://github.com/pa4080/traffic-watch)
+- [How to reset ifconfig counters?](https://askubuntu.com/questions/348038/how-to-reset-ifconfig-counters)
+- [How to execute script when network interface is up?](https://askubuntu.com/questions/277284/execute-script-when-network-interface-is-up)
+- [More about the calculations](https://unix.stackexchange.com/a/40787/201297)
+- [The connected project `traffic-watch`](https://github.com/pa4080/traffic-watch)
