@@ -16,11 +16,11 @@ The sctip is inspired by the question [How to get the current network traffic vi
 
 **3.** The script call syntax:
 
-    get-traffic <interface name> <units of measurement> <period of measure> <type of the output>
+    traffic-get <interface name> <units of measurement> <period of measure> <type of the output>
 
 <!-- -->
 
-    get-traffic enp0s25 MiB 30 total
+    traffic-get enp0s25 MiB 30 total
 
 **4.** Input parameters:
 
