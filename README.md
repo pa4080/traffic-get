@@ -31,7 +31,7 @@ The sctip is inspired by the question [How to get the current network traffic vi
 
 **5.** Examples of usage:
 
-![Examples of usages.](https://i.stack.imgur.com/7gBiM.gif)
+![Examples of usages.](https://raw.githubusercontent.com/pa4080/traffic-get/master/.images/traffic-get.demo.png)
 
 References:
 
