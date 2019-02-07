@@ -25,23 +25,23 @@ get_ip(){ /sbin/ifconfig "$IFACE" 2>/dev/null | grep -Po '[0-9]+\.[0-9]+\.[0-9]+
 
 # The main program: If the interface has IP adders it is UP
 if [[ "$(get_ip)" =~ ${IPPT} ]]; then
-        #bRX="$(< /sys/class/net/"$IFACE"/statistics/rx_bytes)"
-        #bRX="$(< /sys/class/net/"$IFACE"/statistics/tx_bytes)"
+        #bRX="$(< /sys/class/net/"$IFACE"/statistics/rx_bytes)" # (some faster but maybe adjustment needed)
+        #bTX="$(< /sys/class/net/"$IFACE"/statistics/tx_bytes)" # (some faster but maybe adjustment needed)
         bRX="$(/sbin/ifconfig "$IFACE" | grep -Po "RX bytes:[0-9]+" | sed 's/RX bytes://')" # Get the incoming traffic into the Beginning of the period
         bTX="$(/sbin/ifconfig "$IFACE" | grep -Po "TX bytes:[0-9]+" | sed 's/TX bytes://')" # Get the outgoing traffic into the Beginning of the period
         bXX=$(( bRX + bTX )) # Calculate the total traffic into the Beginning of the PERIOD
 
         sleep "$PERIOD" # Sleep for the PERIOD, seconds
 
-        #bRX="$(< /sys/class/net/"$IFACE"/statistics/rx_bytes)"
-        #bRX="$(< /sys/class/net/"$IFACE"/statistics/tx_bytes)"
+        #bRX="$(< /sys/class/net/"$IFACE"/statistics/rx_bytes)" # (some faster but maybe adjustment needed)
+        #bTX="$(< /sys/class/net/"$IFACE"/statistics/tx_bytes)" # (some faster but maybe adjustment needed)
         eRX="$(/sbin/ifconfig "$IFACE" | grep -Po "RX bytes:[0-9]+" | sed 's/RX bytes://')" # Get the incoming traffic into the End of the period
         eTX="$(/sbin/ifconfig "$IFACE" | grep -Po "TX bytes:[0-9]+" | sed 's/TX bytes://')" # Get the outgoing traffic into the End of the period
         eXX=$(( eRX + eTX )) # Calculate the total traffic into the End of the PERIOD
 
-        #RX=$(( ( eRX - bRX ) / UN )) # Calculate the amount of the incoming traffic for the PERIOD
-        #TX=$(( ( eTX - bTX ) / UN )) # Calculate the amount of the outgoing traffic for the PERIOD
-        #XX=$(( ( eXX - bXX ) / UN )) # Calculate the amount of the total traffic for the PERIOD
+        #RX=$(( ( eRX - bRX ) / UN )) # Calculate the amount of the incoming traffic for the PERIOD (Fast but inaccurate without decimal)
+        #TX=$(( ( eTX - bTX ) / UN )) # Calculate the amount of the outgoing traffic for the PERIOD (Fast but inaccurate without decimal)
+        #XX=$(( ( eXX - bXX ) / UN )) # Calculate the amount of the total traffic for the PERIOD (Fast but inaccurate without decimal)
         RX=$(awk -v e="${eRX}" -v b="${bRX}" -v un="${UN}" 'BEGIN{ print ( e - b) / un }') # Calculate the amount of the incoming traffic for the PERIOD
         TX=$(awk -v e="${eTX}" -v b="${bTX}" -v un="${UN}" 'BEGIN{ print ( e - b) / un }') # Calculate the amount of the outgoing traffic for the PERIOD
         XX=$(awk -v e="${eXX}" -v b="${bXX}" -v un="${UN}" 'BEGIN{ print ( e - b) / un }') # Calculate the amount of the total traffic for the PERIOD
